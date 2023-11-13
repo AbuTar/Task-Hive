@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "3Qg7cgwgwNasWwt77GbOImWF+taI2sl7yBTkcT4fZ2q1vH+EpyTkjozIPLMioVCR1NTtaMm2wKxV+4FctNtiMA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Abubaker\\Desktop\\Folders\\Coding\\Coding Practise\\Applications\\Task Hive\\Task Hive\\Task Hive.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Abubaker\\.nuget\\packages\\desktopbridge.helpers\\1.2.2\\desktopbridge.helpers.1.2.2.nupkg.sha512",
+    "C:\\Users\\Abubaker\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.13\\microsoft.data.sqlite.core.7.0.13.nupkg.sha512",
+    "C:\\Users\\Abubaker\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\Abubaker\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
+    "C:\\Users\\Abubaker\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
+    "C:\\Users\\Abubaker\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}

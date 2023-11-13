@@ -1,0 +1,24 @@
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.AssemblyInfoInputs.cache
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.AssemblyInfo.cs
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.csproj.CoreCompileInputs.cache
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.csproj.AssemblyReference.cache
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Program.cs
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Task Hive.exe
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Task Hive.deps.json
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Task Hive.runtimeconfig.json
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Task Hive.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Task Hive.pdb
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\DesktopBridge.Helpers.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Microsoft.Data.Sqlite.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\SQLitePCLRaw.core.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\System.Drawing.Common.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.csproj.CopyComplete
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\refint\Task Hive.dll
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.pdb
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\Task Hive.genruntimeconfig.cache
+C:\Users\Abubaker\Desktop\Folders\Coding\Coding Practise\Applications\Task Hive\Task Hive\obj\Debug\net7.0\ref\Task Hive.dll
