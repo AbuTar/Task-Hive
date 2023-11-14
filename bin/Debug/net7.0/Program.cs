@@ -5,10 +5,6 @@ using System.Data;
 using System.Timers;
 using System.Drawing;
 
-
-
-using Timer = System.Timers.Timer;
-
 namespace Task_Hive
 {
     internal class Program
@@ -16,11 +12,34 @@ namespace Task_Hive
         public static class MethodManager
         {
             private static List<Item> tasks = new List<Item>();
-            private static Dictionary<int, Timer> taskTimers = new Dictionary<int, Timer>();
-            private static string connectionString = $"Data Source=\"{AppDomain.CurrentDomain.BaseDirectory}myTo-DoList.db\"";
+            private static string dbFileName = "myTo-DoList.db";
+            private static string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dbFileName);
+            private static string connectionString = $"Data Source={dbFilePath}";
+
+
+            public static void CreateTasksTable()
+            {
+                using (var connection = new SqliteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "CREATE TABLE IF NOT EXISTS Tasks (" +
+                                              "taskId INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                              "description TEXT, " +
+                                              "duration INTEGER, " +
+                                              "priority TEXT)";
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+
 
             public static void SaveTasksToDatabase()
             {
+                CreateTasksTable();
+
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
@@ -78,62 +97,48 @@ namespace Task_Hive
             }
 
 
-       
+
             public static void AddTask(string x)
             {
                 string descriptionIn = x.Substring(2);
 
-                // Use a do-while loop to keep asking for the duration until a valid integer is entered.
+                // Ask for the duration until a valid integer is entered.
                 int durationMinutes;
-                do
+                Console.WriteLine("Please enter the duration of the task in minutes");
+                while (!int.TryParse(Console.ReadLine(), out durationMinutes))
                 {
-                    Console.WriteLine("Please enter the duration of the task in minutes");
-                    string durationInput = Console.ReadLine();
-                    bool success = int.TryParse(durationInput, out durationMinutes);
+                    Console.WriteLine("Invalid input. Please enter a valid integer value for the duration.");
+                }
 
-                    if (success)
-                    {
-                        int hours = durationMinutes / 60;
-                        int minutes = durationMinutes % 60;
+                int hours = durationMinutes / 60;
+                int minutes = durationMinutes % 60;
 
-                        string durationCompound;
-                        if (hours > 0)
-                        {
-                            durationCompound = $"{hours} hour(s) and {minutes} minute(s)";
-                        }
-                        else
-                        {
-                            durationCompound = $"{minutes} minute(s)";
-                        }
+                string durationCompound;
+                if (hours > 0)
+                {
+                    durationCompound = $"{hours} hour(s) and {minutes} minute(s)";
+                }
+                else
+                {
+                    durationCompound = $"{minutes} minute(s)";
+                }
 
-                        Console.WriteLine("Duration entered: " + durationCompound);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid integer value for the duration.");
-                    }
-                } while (!int.TryParse(Console.ReadLine(), out durationMinutes));
+                Console.WriteLine("Duration entered: " + durationCompound);
 
-                // Use a do-while loop to keep asking for the priority until a valid string is entered.
+                // Ask for the priority until a valid string is entered.
                 string priorityIn;
-                do
+                Console.WriteLine("Please enter the Priority of the task:\nHigh \nMedium \nLow");
+                while (string.IsNullOrEmpty(priorityIn = Console.ReadLine()))
                 {
-                    Console.WriteLine("Please enter the Priority of the task:\nHigh \nMedium \nLow");
-                    priorityIn = Console.ReadLine();
-
-                    if (string.IsNullOrEmpty(priorityIn))
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid string value for the priority.");
-                    }
-                } while (string.IsNullOrEmpty(priorityIn));
+                    Console.WriteLine("Invalid input. Please enter a valid string value for the priority.");
+                }
 
                 Item task = new Item(descriptionIn, durationMinutes, priorityIn);
                 tasks.Add(task);
 
-                
-
                 SaveTasksToDatabase(); // Save the tasks to the database
             }
+
 
             public static void SortTasks(string criterion)
             {
@@ -185,9 +190,23 @@ namespace Task_Hive
             {
                 foreach (var task in tasks)
                 {
-                    Console.WriteLine($"Task ID: {task.taskId}, Description: {task.description}, Priority: {task.priority}");
+                    int hours = task.duration / 60;
+                    int minutes = task.duration % 60;
+
+                    string durationCompound;
+                    if (hours > 0)
+                    {
+                        durationCompound = $"{hours} hour(s) and {minutes} minute(s)";
+                    }
+                    else
+                    {
+                        durationCompound = $"{minutes} minute(s)";
+                    }
+
+                    Console.WriteLine($"Task ID: {task.taskId}, Description: {task.description}, Priority: {task.priority}, Duration: {durationCompound}");
                 }
             }
+
 
             public static void RemoveTask()
             {
@@ -211,16 +230,7 @@ namespace Task_Hive
                     if (taskToRemove != null)
                     {
                         tasks.Remove(taskToRemove);
-
-                        if (taskTimers.ContainsKey(taskToRemove.taskId))
-                        {
-                            taskTimers[taskToRemove.taskId].Enabled = false; // Stop the timer
-                            taskTimers.Remove(taskToRemove.taskId);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Task not found.");
-                        }
+                        Console.WriteLine("Task removed successfully.");
                     }
                     else
                     {
@@ -229,14 +239,19 @@ namespace Task_Hive
 
                     SaveTasksToDatabase(); // Save the tasks to the database
                 }
-
-
-
-
             }
+
+
+
+
+
+
+
 
             private static void LoadTasksFromDatabase()
             {
+                CreateTasksTable();
+
                 using (var connection = new SqliteConnection(connectionString))
                 {
                     connection.Open();
@@ -249,10 +264,10 @@ namespace Task_Hive
                         {
                             while (reader.Read())
                             {
-                                string description = reader.GetString(0);
-                                int duration = reader.GetInt32(1);
-                                string priority = reader.GetString(2);
-                                int taskId = reader.GetInt32(3);
+                                int taskId = reader.GetInt32(0);
+                                string description = reader.GetString(1);
+                                int duration = reader.GetInt32(2);
+                                string priority = reader.GetString(3);
 
                                 Item task = new Item(description, duration, priority, taskId);
                                 tasks.Add(task);
@@ -277,9 +292,13 @@ namespace Task_Hive
             }
 
 
+
             static void Main(string[] args)
             {
+                CreateTasksTable();
                 LoadTasksFromDatabase(); // Load tasks from the database at startup
+
+
 
                 bool continueProgram = true;
 

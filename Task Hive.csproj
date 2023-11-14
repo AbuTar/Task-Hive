@@ -9,9 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="myTo-DoList.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="myTo-DoList.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DesktopBridge.Helpers" Version="1.2.2" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.13" />
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="7.0.14" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.6" />
+	  <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.6" />
+
+	  <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
